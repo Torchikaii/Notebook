@@ -31,17 +31,17 @@ class JsonWriter:
         JsonWriter.write_json(data, filename)
 
 
-class UserFrame(tk.Frame):
+class ContactFrame(tk.Frame):
     def __init__(self, master, user_data=None, on_delete=None, on_update=None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
         self.on_delete = on_delete
         self.on_update = on_update
         self.user_data = user_data or {
-            "vardas": "",
-            "pavarde": "",
-            "adresas": "",
-            "el_pastas": "",
-            "tel_nr": ""
+            "first_name": "",
+            "last_name": "",
+            "address": "",
+            "email": "",
+            "phone_number": ""
         }
         self["bg"] = rgb(49, 164, 125)
         label_color = rgb(49, 164, 125)
@@ -49,81 +49,81 @@ class UserFrame(tk.Frame):
         self.dist = 0.05
         self.dist_xent = 0.4
         # Labels
-        self.vardas = tk.Label(self, text="Vardas:", bg=label_color)
-        self.vardas.place(relx=self.dist, rely=0.2)
-        self.pavarde = tk.Label(self, text="Pavardė:", bg=label_color)
-        self.pavarde.place(relx=self.dist, rely=0.3)
-        self.adresas = tk.Label(self, text="Adresas:", bg=label_color)
-        self.adresas.place(relx=self.dist, rely=0.4)
-        self.email = tk.Label(self, text="El. paštas:", bg=label_color)
+        self.first_name = tk.Label(self, text="First Name:", bg=label_color)
+        self.first_name.place(relx=self.dist, rely=0.2)
+        self.last_name = tk.Label(self, text="Last Name:", bg=label_color)
+        self.last_name.place(relx=self.dist, rely=0.3)
+        self.address = tk.Label(self, text="Address:", bg=label_color)
+        self.address.place(relx=self.dist, rely=0.4)
+        self.email = tk.Label(self, text="Email:", bg=label_color)
         self.email.place(relx=self.dist, rely=0.5)
-        self.numeris = tk.Label(self, text="Tel. nr.:", bg=label_color)
-        self.numeris.place(relx=self.dist, rely=0.6)
+        self.phone_number = tk.Label(self, text="Phone Nr:", bg=label_color)
+        self.phone_number.place(relx=self.dist, rely=0.6)
         # Entries
-        self.ent_vardas = tk.Entry(self, state="disabled", bg=entry_color)
-        self.ent_vardas.place(relx=self.dist_xent, rely=0.2)
-        self.ent_pavarde = tk.Entry(self, state="disabled", bg=entry_color)
-        self.ent_pavarde.place(relx=self.dist_xent, rely=0.3)
-        self.ent_adresas = tk.Entry(self, state="disabled", bg=entry_color)
-        self.ent_adresas.place(relx=self.dist_xent, rely=0.4)
+        self.ent_first_name = tk.Entry(self, state="disabled", bg=entry_color)
+        self.ent_first_name.place(relx=self.dist_xent, rely=0.2)
+        self.ent_last_name = tk.Entry(self, state="disabled", bg=entry_color)
+        self.ent_last_name.place(relx=self.dist_xent, rely=0.3)
+        self.ent_address = tk.Entry(self, state="disabled", bg=entry_color)
+        self.ent_address.place(relx=self.dist_xent, rely=0.4)
         self.ent_email = tk.Entry(self, state="disabled", bg=entry_color)
         self.ent_email.place(relx=self.dist_xent, rely=0.5)
-        self.ent_numeris = tk.Entry(self, state="disabled", bg=entry_color)
-        self.ent_numeris.place(relx=self.dist_xent, rely=0.6)
+        self.ent_phone_number = tk.Entry(self, state="disabled", bg=entry_color)
+        self.ent_phone_number.place(relx=self.dist_xent, rely=0.6)
         # Fill entries if data is provided
         self.set_fields(self.user_data)
         # Buttons
         self.b_edit = tk.Button(self, command=self.edit_b_command, bg=App.button_color)
-        self.b_edit_img = Image.open(r"images/edit-mazas.ico")
+        self.b_edit_img = Image.open(r"images/edit-contact.ico")
         self.b_edit.img = ImageTk.PhotoImage(self.b_edit_img)
         self.b_edit.config(image=self.b_edit.img)
         self.b_edit.place(relx=0.5)
         self.b_del = tk.Button(self, command=self.delete_widget, bg=App.button_color)
-        self.b_del_img = Image.open(r"images/Delete-mazas.ico")
+        self.b_del_img = Image.open(r"images/delete-contact.ico")
         self.b_del.img = ImageTk.PhotoImage(self.b_del_img)
         self.b_del.config(image=self.b_del.img)
         self.b_del.place(relx=0.75)
         self.b_ok = tk.Button(self, command=self.b_ok_command, bg=App.button_color)
-        self.b_ok_img = Image.open(r"images/OK-mazas.ico")
+        self.b_ok_img = Image.open(r"images/ok-contact.ico")
         self.b_ok.img = ImageTk.PhotoImage(self.b_ok_img)
         self.b_ok.config(image=self.b_ok.img)
         # self.b_ok is not placed initially
 
     def set_fields(self, data):
-        self.ent_vardas.config(state="normal")
-        self.ent_pavarde.config(state="normal")
-        self.ent_adresas.config(state="normal")
+        self.ent_first_name.config(state="normal")
+        self.ent_last_name.config(state="normal")
+        self.ent_address.config(state="normal")
         self.ent_email.config(state="normal")
-        self.ent_numeris.config(state="normal")
-        self.ent_vardas.delete(0, tk.END)
-        self.ent_vardas.insert(0, data.get("vardas", ""))
-        self.ent_pavarde.delete(0, tk.END)
-        self.ent_pavarde.insert(0, data.get("pavarde", ""))
-        self.ent_adresas.delete(0, tk.END)
-        self.ent_adresas.insert(0, data.get("adresas", ""))
+        self.ent_phone_number.config(state="normal")
+        self.ent_first_name.delete(0, tk.END)
+        self.ent_first_name.insert(0, data.get("first_name", ""))
+        self.ent_last_name.delete(0, tk.END)
+        self.ent_last_name.insert(0, data.get("last_name", ""))
+        self.ent_address.delete(0, tk.END)
+        self.ent_address.insert(0, data.get("address", ""))
         self.ent_email.delete(0, tk.END)
-        self.ent_email.insert(0, data.get("el_pastas", ""))
-        self.ent_numeris.delete(0, tk.END)
-        self.ent_numeris.insert(0, data.get("tel_nr", ""))
-        self.ent_vardas.config(state="disabled")
-        self.ent_pavarde.config(state="disabled")
-        self.ent_adresas.config(state="disabled")
+        self.ent_email.insert(0, data.get("email", ""))
+        self.ent_phone_number.delete(0, tk.END)
+        self.ent_phone_number.insert(0, data.get("phone_number", ""))
+        self.ent_first_name.config(state="disabled")
+        self.ent_last_name.config(state="disabled")
+        self.ent_address.config(state="disabled")
         self.ent_email.config(state="disabled")
-        self.ent_numeris.config(state="disabled")
+        self.ent_phone_number.config(state="disabled")
 
     def activate(self):
-        self.ent_vardas["state"] = "normal"
-        self.ent_pavarde["state"] = "normal"
-        self.ent_adresas["state"] = "normal"
+        self.ent_first_name["state"] = "normal"
+        self.ent_last_name["state"] = "normal"
+        self.ent_address["state"] = "normal"
         self.ent_email["state"] = "normal"
-        self.ent_numeris["state"] = "normal"
+        self.ent_phone_number["state"] = "normal"
 
     def deactivate(self):
-        self.ent_vardas["state"] = "disabled"
-        self.ent_pavarde["state"] = "disabled"
-        self.ent_adresas["state"] = "disabled"
+        self.ent_first_name["state"] = "disabled"
+        self.ent_last_name["state"] = "disabled"
+        self.ent_address["state"] = "disabled"
         self.ent_email["state"] = "disabled"
-        self.ent_numeris["state"] = "disabled"
+        self.ent_phone_number["state"] = "disabled"
 
     def edit_b_command(self):
         self.b_edit.place_forget()
@@ -136,11 +136,11 @@ class UserFrame(tk.Frame):
         self.deactivate()
         # Update user data
         self.user_data = {
-            "vardas": self.ent_vardas.get(),
-            "pavarde": self.ent_pavarde.get(),
-            "adresas": self.ent_adresas.get(),
-            "el_pastas": self.ent_email.get(),
-            "tel_nr": self.ent_numeris.get()
+            "first_name": self.ent_first_name.get(),
+            "last_name": self.ent_last_name.get(),
+            "address": self.ent_address.get(),
+            "email": self.ent_email.get(),
+            "phone_number": self.ent_phone_number.get()
         }
         if self.on_update:
             self.on_update(self)
@@ -162,7 +162,7 @@ class App(tk.Tk):
         self.geometry("1366x786")
         # Background
         self.label = tk.Label(self)
-        self.imgg = Image.open(r"images/backgroundas.png")
+        self.imgg = Image.open(r"images/background.png")
         self.label.img = ImageTk.PhotoImage(self.imgg)
         self.label['image'] = self.label.img
         self.label.place(relwidth=1, relheight=1, relx=0, rely=0)
@@ -170,8 +170,8 @@ class App(tk.Tk):
         self.user_frames = []
         # Add button frame
         self.add_frame = tk.Frame(self, bg=rgb(49, 164, 125))
-        self.add_button = tk.Button(self.add_frame, command=self.add_user, bg="blue")
-        self.add_img = Image.open(r"images/add-mazas.ico")
+        self.add_button = tk.Button(self.add_frame, command=self.add_user, bg=App.button_color)
+        self.add_img = Image.open(r"images/add-contact.ico")
         self.add_button.img = ImageTk.PhotoImage(self.add_img)
         self.add_button.config(image=self.add_button.img)
         self.add_button.place(relx=0.5, rely=0.5, anchor="center")
@@ -211,20 +211,20 @@ class App(tk.Tk):
         except Exception:
             users = []
         for user_data in users:
-            frame = UserFrame(self, user_data=user_data, on_delete=self.delete_user, on_update=self.update_user)
+            frame = ContactFrame(self, user_data=user_data, on_delete=self.delete_user, on_update=self.update_user)
             self.user_frames.append(frame)
         self.render_widgets()
 
     def add_user(self):
         # Add a new user with empty fields
         new_user = {
-            "vardas": "",
-            "pavarde": "",
-            "adresas": "",
-            "el_pastas": "",
-            "tel_nr": ""
+            "first_name": "",
+            "last_name": "",
+            "address": "",
+            "email": "",
+            "phone_number": ""
         }
-        frame = UserFrame(self, user_data=new_user, on_delete=self.delete_user, on_update=self.update_user)
+        frame = ContactFrame(self, user_data=new_user, on_delete=self.delete_user, on_update=self.update_user)
         self.user_frames.append(frame)
         self.render_widgets()
         # Ensure the new frame is visible and editable

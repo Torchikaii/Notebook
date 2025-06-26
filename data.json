@@ -1,11 +1,11 @@
 {
     "users": [
         {
-            "vardas": "user",
-            "pavarde": "last name",
-            "adresas": "test",
-            "el_pastas": "test@test",
-            "tel_nr": "46846416"
+            "first_name": "sdsd",
+            "last_name": "dfdsf",
+            "address": "dfdsf",
+            "email": "dfdf",
+            "phone_number": "sdfsddf"
         }
     ]
 }
