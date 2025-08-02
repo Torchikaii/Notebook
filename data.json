@@ -1,11 +1,11 @@
 {
     "users": [
         {
-            "first_name": "sdsd",
-            "last_name": "dfdsf",
-            "address": "dfdsf",
-            "email": "dfdf",
-            "phone_number": "sdfsddf"
+            "first_name": "Fname",
+            "last_name": "Lname",
+            "address": "country",
+            "email": "example",
+            "phone_number": "00000000000"
         }
     ]
 }
