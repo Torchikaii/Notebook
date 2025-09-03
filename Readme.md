@@ -1,13 +1,16 @@
-### Description
 
-Notebook is an application for storing your contact information, having basic add, deleted and edit functionality.
 
 <div align=center>
 <img width="1359" height="689" alt="image" src="https://github.com/user-attachments/assets/0f2807d8-b53f-4e50-95eb-9412a599b8e2" />
 
-**Fig. 1** Screenshot of running Notebook app. 
+
 
 </div>
+
+### Description
+
+Notebook is an application for storing your contact information, having basic add, deleted and edit functionality.
+
 
 ### How to set up
 
